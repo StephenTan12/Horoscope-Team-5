@@ -1,10 +1,11 @@
 import { Horoscope } from "./history.js";
+
+const HYPERLINK = "https://stephentan12.github.io/Horoscope-Team-5/source/horoscope/pages/landing.html";
+
 /**
  * Card displaying a past horoscope entry
  * 
  */
-const hyperlink = "https://stephentan12.github.io/Horoscope-Team-5/source/horoscope/pages/landing.html";
-
 class pastEntryCard extends HTMLElement {
     constructor() {
         super();
@@ -49,7 +50,7 @@ class pastEntryCard extends HTMLElement {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const birthdayDisplay = birthday.toLocaleDateString(undefined, options);
 
-        const tweet = data.message + "  Get your fortune: " + hyperlink;
+        const tweet = data.message + "  Get your fortune: " + HYPERLINK;
 
         /**
          * Display the image and name of the user's horoscope, 

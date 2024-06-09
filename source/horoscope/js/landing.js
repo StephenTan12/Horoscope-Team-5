@@ -1,6 +1,6 @@
 import { dateToHoroscope } from './horoscope.js';
 
-const birthdayElement = document.getElementById('birthday-input');
+const BIRTHDAY_ELEMENT = document.getElementById('birthday-input');
 const HOROSCOPE_PAGE = 'horoscope.html';
 
 window.addEventListener('DOMContentLoaded', init);
@@ -16,11 +16,11 @@ async function init() {
     // Load in the Birthday if stored
     let birthday = localStorage.getItem('birthday');
     if (birthday) {
-        birthdayElement.value = birthday 
+        BIRTHDAY_ELEMENT.value = birthday 
     }
 
     // fr-ca to get date in YYYY-MM-DD set max day to Today
-    birthdayElement.max = new Date().toLocaleDateString('fr-ca');
+    BIRTHDAY_ELEMENT.max = new Date().toLocaleDateString('fr-ca');
 }
 
 /**
@@ -29,7 +29,7 @@ async function init() {
  * @returns {void}
  */
 function button() {
-    let birthday = birthdayElement.value;
+    let birthday = BIRTHDAY_ELEMENT.value;
 
     //check if birthday is valid Alerts Given in function
     if (!checkValidBirthday(birthday)) {

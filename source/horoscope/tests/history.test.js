@@ -95,4 +95,3 @@ describe('Test history page', () => {
 
 
 });
-

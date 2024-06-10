@@ -21,12 +21,12 @@ describe('Basic user flow for Website', () => {
         // Submit the form
         await Promise.all([
           page.waitForNavigation(),
-          page.click('#submit-horo') 
+          page.click('#submit') 
         ]);
 
         await Promise.all([
           page.waitForNavigation(),
-          page.click('#save-horo') 
+          page.click('#save') 
         ]);
 
         // Make sure localStorage is updated with the correct horoscope
@@ -38,9 +38,20 @@ describe('Basic user flow for Website', () => {
         let pastEntries = await page.$$('past-entry-card');
         expect(pastEntries.length).toBe(1);
 
-        await page.$eval("#clear-horos", button =>
-          button.click()
-       );
+
   }, 10000);
 
+  it('Clearing Horoscopes', async () => {
+    console.log("Clearing information...");
+    //Clear horoscopes
+    //let button = page.$("#clear-horos");
+    await page.$eval("#clear-horos", button =>
+        button.click()
+    );
+
+    // Make sure localStorage is updated
+    const localHoroscopes = await page.evaluate(() => window.localStorage.getItem("horoscopes"));
+    expect(localHoroscopes).toBe(null);
+  }, 10000)
 });
+

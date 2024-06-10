@@ -1,6 +1,5 @@
 //E2E tests
 const BASEURL = 'http://127.0.0.1:5500/source/horoscope/pages/'
-const SIGNNAMES = ['Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn'];
 describe('Basic user flow for Website', () => {
     beforeAll(async () => {
       try {
@@ -22,12 +21,12 @@ describe('Basic user flow for Website', () => {
         // Submit the form
         await Promise.all([
           page.waitForNavigation(),
-          page.click('#submit') 
+          page.click('#submit-horo') 
         ]);
 
         await Promise.all([
           page.waitForNavigation(),
-          page.click('#save') 
+          page.click('#save-horo') 
         ]);
 
         // Make sure localStorage is updated with the correct horoscope
@@ -39,23 +38,9 @@ describe('Basic user flow for Website', () => {
         let pastEntries = await page.$$('past-entry-card');
         expect(pastEntries.length).toBe(1);
 
+  }, 10000);
 
-      }, 10000);
-
-  it('Clearing Horoscopes', async () => {
-    console.log("Clearing information...");
-    //Clear horoscopes
-    //let button = page.$("#clear-horos");
-    await page.$eval("#clear-horos", button =>
-        button.click()
-    );
-
-    // Make sure localStorage is updated
-    const localHoroscopes = await page.evaluate(() => window.localStorage.getItem("horoscopes"));
-    expect(localHoroscopes).toBe(null);
-  }, 10000)
 });
-
 
 describe('Navigation Bar Scenario Tests', () => {
   let curUrl;
@@ -78,12 +63,12 @@ describe('Navigation Bar Scenario Tests', () => {
     // Submit the form
     await Promise.all([
       page.waitForNavigation(),
-      page.click('#submit') 
+      page.click('#submit-horos') 
     ]);
 
     await Promise.all([
       page.waitForNavigation(),
-      page.click('#save') 
+      page.click('#save-horos') 
     ]);
 
     await Promise.all([

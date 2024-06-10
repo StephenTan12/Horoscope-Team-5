@@ -22,12 +22,12 @@ describe('Navigation Bar Scenario Tests', () => {
       // Submit the form
       await Promise.all([
         page.waitForNavigation(),
-        page.click('#submit-horos') 
+        page.click('#submit-horo') 
       ]);
   
       await Promise.all([
         page.waitForNavigation(),
-        page.click('#save-horos') 
+        page.click('#save-horo') 
       ]);
   
       await Promise.all([
@@ -70,7 +70,7 @@ describe('Navigation Bar Scenario Tests', () => {
       await Promise.all([
         page.waitForNavigation(),
         page.click("#menu"),
-        page.click('#compatibility') 
+        page.click('#love-compatibility') 
       ]);
   
       // Check location
@@ -92,7 +92,17 @@ describe('Navigation Bar Scenario Tests', () => {
         page.waitForNavigation(),
         page.click('#save-compatibility') 
       ]);
-    }, 10000);
+
+      await Promise.all([
+        page.waitForNavigation(),
+        page.click('#back')
+      ]);
+  
+      // Check location
+      curUrl = await page.url();
+      expect(curUrl).toBe(BASEURL + 'landing.html');
+
+    }, 30000);
   
   
     // Navigate to History

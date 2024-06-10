@@ -1,7 +1,5 @@
 //E2E tests
 const BASEURL = 'http://127.0.0.1:5500/source/horoscope/pages/'
-const SIGNNAMES = ['Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn'];
-
 describe('Basic user flow for Website', () => {
     beforeAll(async () => {
       try {
@@ -43,5 +41,6 @@ describe('Basic user flow for Website', () => {
         await page.$eval("#clear-horos", button =>
           button.click()
        );
-    }, 10000);
+  }, 10000);
+
 });

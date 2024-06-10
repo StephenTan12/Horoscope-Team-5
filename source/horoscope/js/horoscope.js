@@ -17,8 +17,12 @@ async function init() {
     // begin horoscope animation upon opening site
     let date = localStorage.getItem('birthday');
 
+    // if (window.location.href !== HOROSCOPE_PAGE) {
+    //     return;
+    // }
+
     if (backgroundVideo) {
-        backgroundVideo.setAttribute("src","https://github.com/ZhouYuantian/CSE110-Storge/raw/main/"+dateToHoroscope(date)+".mp4");
+        // backgroundVideo.setAttribute("src","https://github.com/ZhouYuantian/CSE110-Storge/raw/main/"+dateToHoroscope(date)+".mp4");
     }
 
     if (document.getElementById("output")) {

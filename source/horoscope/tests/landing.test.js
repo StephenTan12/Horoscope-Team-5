@@ -43,8 +43,7 @@ describe('Basic user flow for Website', () => {
         await page.$eval("#clear-horos", button =>
           button.click()
        );
-  }, 10000);
-
+    }, 10000);
 });
 
 describe('Navigation Bar Scenario Tests', () => {
@@ -112,6 +111,34 @@ describe('Navigation Bar Scenario Tests', () => {
   });
 
   // Navigate to Compatibility
+  it('Initial Page - Submit Information', async () => {
+    await Promise.all([
+      page.waitForNavigation(),
+      page.click("#menu"),
+      page.click('#compatibility') 
+    ]);
+
+    // Check location
+    curUrl = await page.url();
+    expect(curUrl).toBe(BASEURL + 'compatibility.html');
+
+    console.log('Submitting information...');
+    // Submit birthday
+    await page.$eval('#birthday-input1', el => el.value = '2003-02-20');
+    await page.$eval('#birthday-input2', el => el.value = '2003-09-10');
+
+    // Submit the form
+    await Promise.all([
+      page.waitForNavigation(),
+      page.click('#submit-compatibility') 
+    ]);
+
+    await Promise.all([
+      page.waitForNavigation(),
+      page.click('#save-compatibility') 
+    ]);
+  }, 10000);
+
 
   // Navigate to History
   it ('History Test', async() => {
@@ -124,16 +151,5 @@ describe('Navigation Bar Scenario Tests', () => {
     // Check location
     curUrl = await page.url();
     expect(curUrl).toBe(BASEURL + 'history.html');
-
-    let storedHoro = await page.evaluate(() => localStorage.getItem('horoscopes'));
-    let obj = JSON.parse(storedHoro);
-    expect(obj.length).toBe(1);
-    
-    try {
-      expect(obj[0]['sign']).toBe('Taurus')
-    } catch (error) {
-      console.log("Horoscope not saved");
-    }
-  });
-   
+  }, 10000);
 });

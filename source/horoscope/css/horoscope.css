@@ -34,6 +34,8 @@ body {
     display: flex;
     flex-direction: row;
     height: 100vh;
+
+    overflow: hidden;
 }
 
 /* Video that plays when birthdate is submitted */
@@ -52,14 +54,17 @@ video {
 
 main {
     /* Center and scale the image nicely */
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-origin: padding-box;
 
     /* takes up the full page, but adjusts based on display size */
     margin: 0;
-    padding: 0;
+    /* padding: 0; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -94,20 +99,20 @@ main {
 #output {
     /* positioning on the webpage, changes based on the webpage size but keeps itself centered */
     position: absolute;
-    bottom: 4vw;
+    bottom: 6vw;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     width: 80%;
     margin-bottom: 0.3rem;
 }
 
 /* Name of the corresponding horoscope */
-#horoscope-title {
+#horoscope-title, #compatibility-title {
     position: fixed;
     /* Set the position property to relative */
 
@@ -120,7 +125,7 @@ main {
 }
 
 /* Fortune prompt */
-#horoscope-fortune {
+#horoscope-fortune, #compatibility-fortune {
     /* positioning in the 'output' box. text is centered at all times. */
     display: block;
     margin-left: auto;
@@ -211,7 +216,7 @@ main {
     }
 
     #output {
-        bottom: 6vw;
+        bottom: 8vw;
         font-size: 16px;
         width: 90%;
     }

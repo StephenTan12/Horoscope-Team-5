@@ -38,6 +38,9 @@ describe('Basic user flow for Website', () => {
         let pastEntries = await page.$$('past-entry-card');
         expect(pastEntries.length).toBe(1);
 
+        await page.$eval("#clear-horos", button =>
+          button.click()
+       );
   }, 10000);
 
 });

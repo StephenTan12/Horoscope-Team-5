@@ -116,5 +116,9 @@ describe('Navigation Bar Scenario Tests', () => {
       // Check location
       curUrl = await page.url();
       expect(curUrl).toBe(BASEURL + 'history.html');
+
+      await page.$eval("#clear-horos", button =>
+        button.click()
+     );
     }, 10000);
   });

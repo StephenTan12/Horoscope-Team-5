@@ -10,6 +10,8 @@ const LOVE_PAGE = 'compatibility.html';
 
 window.addEventListener('DOMContentLoaded', init);
 async function init() {
+    console.log(LANDING_PAGE);
+
     const submit = document.getElementById('submit-horo');
     if (submit) {
         submit.addEventListener('click', button);
